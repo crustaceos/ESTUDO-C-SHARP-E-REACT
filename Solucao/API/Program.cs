@@ -20,6 +20,15 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Programa Loja Estudo");
 
+app.MapPost("/api/categoria/cadastrar", ([FromBody] Categoria categoria, [FromServices] AppDbContext ctx) =>{
+
+    ctx.Categorias.Add(categoria);
+    ctx.SaveChanges();
+    return Results.Created("",categoria);
+
+});
+
+
 ///FromBody é a tabelinha em json com as informações que eu coloco embaixo da requisição de cadastrar, ele pega aquelas informações e joga dentro da variavel "cliente" que veio da classe "Cliente"
 app.MapPost("/api/cliente/cadastrar", ([FromBody] Cliente cliente, [FromServices] AppDbContext ctx)=>{
 
@@ -28,13 +37,15 @@ ctx.SaveChanges();
 return Results.Created("",cliente);
 });
 
-app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto, [FromServices] AppDbContext ctx)=>{
+app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto, [FromServices] AppDbContext ctx) =>
+{
+    // Verificar se a categoria existe antes de adicionar o produto
 
     ctx.Produtos.Add(produto);
     ctx.SaveChanges();
-    return Results.Created("",produto);
-
+    return Results.Created("", produto);
 });
+
 
 app.MapGet("/api/cliente/listarTudo", ([FromServices] AppDbContext ctx) =>{
 
@@ -116,6 +127,36 @@ app.MapPut("/api/produto/alterar/id:{id}", ([FromRoute] int id, [FromBody] Produ
 
 
 });
+
+app.MapGet("/api/produto/scorebaixo", ([FromServices] AppDbContext ctx) => {
+
+    if(ctx.Produtos.Count() > 0){
+        return Results.Ok(
+            ctx.Produtos
+                .Where(x => x.Status != "Alto")
+                .ToList()
+        );
+    }
+
+    return Results.NotFound("Produtos com Score Baixo não encontrados");
+
+
+});
+
+
+
+app.MapGet("/api/produto/scorealto", ([FromServices] AppDbContext ctx) => {
+
+    var produtos = ctx.Produtos.Where(x => x.Status == "Alto").ToList();
+    
+    if (produtos.Any()) {
+        return Results.Ok(produtos);
+    }
+
+    return Results.NotFound("Nenhum produto com 'Score Alto' encontrado.");
+});
+
+
 
 ///COLOCAR ESSE TBM
 app.UseCors("Acesso Total");

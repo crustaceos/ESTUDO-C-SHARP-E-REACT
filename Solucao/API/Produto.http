@@ -2,9 +2,14 @@
 POST  http://localhost:5006/api/produto/cadastrar
 Content-Type: application/json
 
-{   "Nome": "Porsche 911",
+//NO CASO DO STATUS EU N VOU CRIAR O PRODUTO(TAREFA) JA COM O STATUS PRONTO OU SLA< SEMPRE VAI INICIAR COMO STATUS PENDENTE
+//DPS EU FAÇO PRA QUE QUANDO EU ALTERAR (PUT) O PRODUTO(TAREFA) EU DIGA O NOVO STATUS
+
+{   "Nome": "Porsche 718",
     "Descricao":"Carro esportivo",
-    "Valor": 1000000
+    "Valor": 1000000,
+    "Status": "Alto"
+    
 }
 
 ###LISTAR TODOS OS PRODUTOS
@@ -25,3 +30,9 @@ Content-Type: application/json
     "Descricao": "SUV de luxo",
     "Valor": 500000
 }
+
+###SCORE BAIXO
+GET  http://localhost:5006/api/produto/scorebaixo
+
+###SCORE ALTO
+GET  http://localhost:5006/api/produto/scorealto

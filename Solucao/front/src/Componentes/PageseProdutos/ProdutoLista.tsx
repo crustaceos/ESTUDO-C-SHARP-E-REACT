@@ -79,6 +79,7 @@ function deletarProduto(e: React.FormEvent) {
           <th>Nome</th>
           <th>Descrição</th>
           <th>Valor</th>
+          <th>Status</th>
         </tr>
       </thead>
 
@@ -93,6 +94,7 @@ function deletarProduto(e: React.FormEvent) {
             <td>{produto.nome}</td>
             <td>{produto.descricao}</td>
             <td>{produto.valor}</td>
+            <td>{produto.status}</td>
             
           </tr>
           
