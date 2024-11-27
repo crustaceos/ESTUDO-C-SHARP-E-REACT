@@ -3,6 +3,13 @@ import { Produto } from "../../Models/Produto"
 import "../../styles.css"
 
 function ProdutoLista() {
+    const[id, setId] = useState<number>(0);
+
+        
+    
+
+    
+            
 
 
 ///cria uma constante da seguinte forma: "produtos" é o estado atual que ele está, no inicio, ta vazio
@@ -33,6 +40,28 @@ useEffect(() => {
 }, []); 
 
 
+function deletarProduto(e: React.FormEvent) {
+  e.preventDefault();
+
+  fetch("http://localhost:5006/api/produto/deletar/id:" + id, {
+    method: "DELETE",
+  })
+    .then((resposta) => {
+      if (!resposta.ok) {
+        throw new Error("Erro ao deletar produto");
+      }
+      console.log("Exclusão bem-sucedida");
+    })
+    .catch((error) => {
+      console.error("Erro na exclusão:", error);
+    })
+    .then((data) => {
+        setId(0);
+    });
+}
+
+
+
 
 
   ///<tr> é a linha, <th> oq vai estar no cabeçalho (usar em <thead> que é o próprio cabeçalho), <td> corpo da tabela (usar em <tbody> que é o corpo da tabela)
@@ -58,18 +87,30 @@ useEffect(() => {
       <tbody>
         
         {produtos.map((produto) =>(
+            
           <tr key = {produto.id}>
             <td>{produto.id}</td>
             <td>{produto.nome}</td>
             <td>{produto.descricao}</td>
             <td>{produto.valor}</td>
+            
           </tr>
+          
 
         ))}
+        
 
       </tbody>
 
       </table>
+        <div>
+      <h3>Deletar produto</h3>
+      <form onSubmit={deletarProduto}>
+        <label>Digite o ID do produto que deseja deletar:</label>
+        <input type = "number" value ={id} onChange = {e => setId(Number(e.target.value))}required/>
+        <button type = "submit">Deletar Produto</button>
+      </form>
+      </div>
 
     </div>
   );

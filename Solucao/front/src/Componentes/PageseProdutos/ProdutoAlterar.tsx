@@ -31,7 +31,7 @@ const [valor, setValor] = useState<number>(0);
         setValor(data.valor);
       })
       .catch((error) => {
-        throw new Error("Falha");
+        throw new Error("Produto não encontrado");
       })
    
   }
@@ -70,7 +70,7 @@ const [valor, setValor] = useState<number>(0);
 
   return (
     <div>
-      <h3>Buscar Produto para Alteração</h3>
+      <h2>Buscar Produto para Alteração</h2>
       <form onSubmit={buscarProduto}>
         <label>
             Digite o id do produto que deseja alterar:

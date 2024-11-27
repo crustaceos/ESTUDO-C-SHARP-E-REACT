@@ -46,7 +46,7 @@ function ProdutoBuscar() {
   ///como dessa vez, não quero mostrar uma lista de produtos, apenas um, eu chamo produto && pra verificar se tem algum, e apenas mostro na tela os compenentes desse produto. Ou seja, não utilizo .map, .map é para arrays (listas)
   return (
     <div>
-      <h3>Buscar Produto</h3>
+      <h2>Buscar Produto</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Digite o ID do produto:
