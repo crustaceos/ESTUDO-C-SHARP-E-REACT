@@ -1,0 +1,23 @@
+
+
+
+.container {
+    display: flex;
+    flex-direction: column; /* Mantém os itens empilhados verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
+  }
+  
+    .tabela{
+      border: 1px solid black;
+    }
+  
+    .tabela th, .tabela td{
+      border: 1px solid black;
+      padding: 5px;
+    }
+    
+  
+
+    

@@ -151,3 +151,4 @@ C:\Users\caueg\OneDrive\Área de Trabalho\EstudoCSharpEReact\Solucao\API\obj\Deb
 C:\Users\caueg\OneDrive\Área de Trabalho\EstudoCSharpEReact\Solucao\API\obj\Debug\net8.0\API.pdb
 C:\Users\caueg\OneDrive\Área de Trabalho\EstudoCSharpEReact\Solucao\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\caueg\OneDrive\Área de Trabalho\EstudoCSharpEReact\Solucao\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\caueg\OneDrive\Área de Trabalho\EstudoCSharpEReact\Solucao\API\obj\Debug\net8.0\API.sourcelink.json
